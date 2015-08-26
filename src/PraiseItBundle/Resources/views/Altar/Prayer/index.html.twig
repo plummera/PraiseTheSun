@@ -1,0 +1,42 @@
+{% extends 'PraiseItBundle:Paladin:base.html.twig' %}
+
+{% block results -%}
+    <h2 class="sub-header">The Book of Praise</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Sacrifice</th>
+            <th>Date</th>
+            <th>Header</th>
+          </tr>
+        </thead>
+        {% for prayer in prayers %}
+        <tbody>
+          <tr>
+            <td><a href="{{ path('prayer_show', { 'id': prayer.id }) }}">{{ prayer.id }}</a></td>
+            <td>{{ prayer.name }}</td>
+            <td>{{ prayer.sacrifice }}</td>
+            <td>{% if prayer.date %}{{ prayer.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+            <ul>
+                <li>
+                    <a href="{{ path('prayer_show', { 'id': prayer.id }) }}">show</a>
+                </li>
+                <li>
+                    <a href="{{ path('prayer_edit', { 'id': prayer.id }) }}">edit</a>
+                </li>
+            </ul>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+    {% endblock %}

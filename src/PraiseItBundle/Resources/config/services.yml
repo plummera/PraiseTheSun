@@ -1,0 +1,8 @@
+services:
+#    praise_the_sun_praise_it.example:
+#        class: PraiseItBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    praiseit_user.registration.form.type:
+        class: PraiseItBundle\Form\Type\RegistrationFormType
+        tags:
+             - { name: form.type, alias: praiseit_user_registration }

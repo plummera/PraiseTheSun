@@ -1,0 +1,20 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block navbar %}
+  <li><a href="{{ path('Altar_of_The_Sun') }}">Home</a></li>
+                  <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}</li>
+                  <li class="active"><a href="{{ path('fos_user_registration_register') }}">SignUp</a></li>
+                  <li><a href="#"><img src="{{ asset('bundles/praiseit/images/sun.png') }}" length="30px" width="30px"></a></li>
+{% endblock %}
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{# {{ form_widget (form) }} #}
+{% endblock fos_user_content %}

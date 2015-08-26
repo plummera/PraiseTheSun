@@ -1,0 +1,3 @@
+praise_the_sun_praise_it_homepage:
+    path:     /PraiseTheSun/{name}
+    defaults: { _controller: PraiseItBundle:Default:index }

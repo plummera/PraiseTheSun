@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Altar of The Sun</title>
+    <meta name="description" content="Here you can pray to the Sun from the Altar of the Sun, Peace and many blessings.">
+    <meta name="author" content="Anthony T. Plummer">
+
+    {% block favicon %}
+      <link rel="icon" href="../../favicon.ico">
+    {% endblock %}
+
+    {% block title %}
+      Cover Template for Bootstrap
+    {% endblock %}
+
+    {% block stylesheets %}
+        {% stylesheets '@bootstrap_less' combine=true %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="http://getbootstrap.com/examples/cover/cover.css" type="text/css">
+        {% endstylesheets %}
+    {% endblock %}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  {% block body %}
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">{% block masthead %}Cover{% endblock %}</h3>
+              <nav>
+                <ul class="nav masthead-nav">{% block navbar %}
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Contact</a></li>{% endblock %}
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">{% block header %}Cover your page.{% endblock %}</h1>
+            <p class="lead">{% block plead1 %}Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.{% endblock %}</p>
+            <div class="form"><form>{% block form %} {% endblock %}</form></div>
+	    <p class="lead">{% block plead2 %} {% endblock %}</p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>{% block footer %}Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.{% endblock %}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endblock body %}
+  </body>
+  
+    {% block javascripts %}
+        {% javascripts '@jquery_js' '@bootstrap_js' filter='?yui_js' combine=true %}
+            <script src="{{ asset_url }}"></script>
+	         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script src="{{ asset('bundles/praiseit/js/main.js') }}"></script>
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+</html>

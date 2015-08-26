@@ -1,0 +1,80 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block navbar %}
+  <li><a href="{{ path('Altar_of_The_Sun') }}">Home</a></li>
+                  <li class="active">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}</li>
+                  <li><a href="{{ path('fos_user_registration_register') }}">SignUp</a></li>
+                  <li><a href="#"><img src="{{ asset('bundles/praiseit/images/sun.png') }}" length="30px" width="30px"></a></li>
+{% endblock navbar %}
+
+{% block header %}
+  
+{% endblock header %}
+
+{% block plead1 %}
+
+{% endblock %}
+
+{% block fos_user_content %}
+
+<div class="center-block panel panel-default">
+<div class="panel-heading"><h2>Do You Even Pray Bro?</h2></div>
+<div class="col-md-6 panel-body">
+
+{% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div class="input-group">
+            <span class="input-group-addon">Username:</span>
+    	   <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+
+        <br>
+
+        <div class="input-group">
+    	   <span class="input-group-addon">Password:</span>
+    	   <input type="password" class="form-control" name="_password" required="required" />
+        </div>
+
+        <br>
+
+        <div class="input-group">
+    	   <input type="checkbox" class="inline-checkbox" name="_remember_me" value="on" />
+    	   <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+
+        <br>
+
+        <div class="input-group input-group-lg">
+    	   <input type="submit" class="btn" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        </div>
+</form>
+</div>
+
+<div class="col-md-6 panel-body">
+
+    <img src="{{ asset('bundles/praiseit/images/sun.png') }}" length="70%" width="70%">
+
+</div>
+
+<div class="col-md-12 panel-footer">
+    Do you even pray bro?
+</div>
+
+
+
+</div>
+{% endblock fos_user_content %}

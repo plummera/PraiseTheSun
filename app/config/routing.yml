@@ -1,0 +1,12 @@
+# app/config/routing.yml
+
+praise_it:
+    resource: "@PraiseItBundle/Controller/"
+    type:	  annotation
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
