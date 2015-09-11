@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'PraiseItBundle:Paladin:base.html.twig' %}
 
-{% block body -%}
+{% block results -%}
     <h1>Prayer list</h1>
 
     <table class="records_list">
@@ -13,18 +13,18 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for prayer in prayers %}
             <tr>
-                <td><a href="{{ path('prayer_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('prayer_show', { 'id': prayer.id }) }}">{{ prayer.id }}</a></td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.sacrifice }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('prayer_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('pray_show', { 'id': prayer.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('prayer_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('pray_edit', { 'id': prayer.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -35,7 +35,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('prayer_new') }}">
+            <a href="{{ path('pray_new') }}">
                 Create a new entry
             </a>
         </li>

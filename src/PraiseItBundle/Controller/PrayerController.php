@@ -1,6 +1,6 @@
 <?php
 
-namespace PraiseItBundle\Controller\Altar;
+namespace PraiseItBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,7 +11,7 @@ use PraiseItBundle\Entity\Prayer;
 use PraiseItBundle\Form\PrayerType;
 
 /**
- * Altar\Prayer controller.
+ * Prayer controller.
  *
  * @Route("/pray")
  */
@@ -19,28 +19,28 @@ class PrayerController extends Controller
 {
 
     /**
-     * Lists all Altar\Prayer entities.
+     * Lists all Prayer entities.
      *
      * @Route("/", name="pray")
      * @Method("GET")
-     * @Template()
+     * @Template("PraiseItBundle:Prayer:index.html.twig")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PraiseItBundle:Prayer')->findAll();
+        $prayers = $em->getRepository('PraiseItBundle:Prayer')->findAll();
 
         return array(
-            'entities' => $entities,
+            'prayers' => $prayers,
         );
     }
     /**
-     * Creates a new Altar\Prayer entity.
+     * Creates a new Prayer entity.
      *
      * @Route("/", name="pray_create")
      * @Method("POST")
-     * @Template("PraiseItBundle:Altar\Prayer:new.html.twig")
+     * @Template("PraiseItBundle:Prayer:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -53,7 +53,7 @@ class PrayerController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pray_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('pray_new', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,7 +63,7 @@ class PrayerController extends Controller
     }
 
     /**
-     * Creates a form to create a Altar\Prayer entity.
+     * Creates a form to create a Prayer entity.
      *
      * @param Prayer $entity The entity
      *
@@ -82,11 +82,11 @@ class PrayerController extends Controller
     }
 
     /**
-     * Displays a form to create a new Altar\Prayer entity.
+     * Displays a form to create a new Prayer entity.
      *
      * @Route("/new", name="pray_new")
      * @Method("GET")
-     * @Template()
+     * @Template("PraiseItBundle:Prayer:new.html.twig")
      */
     public function newAction()
     {
@@ -100,32 +100,32 @@ class PrayerController extends Controller
     }
 
     /**
-     * Finds and displays a Altar\Prayer entity.
+     * Finds and displays a Prayer entity.
      *
      * @Route("/{id}", name="pray_show")
      * @Method("GET")
-     * @Template()
+     * @Template("PraiseItBundle:Prayer:show.html.twig")
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PraiseItBundle:Altar\Prayer')->find($id);
+        $prayer = $em->getRepository('PraiseItBundle:Prayer')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Altar\Prayer entity.');
+        if (!$prayer) {
+            throw $this->createNotFoundException('Unable to find Prayer entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'prayer'      => $prayer,
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-     * Displays a form to edit an existing Altar\Prayer entity.
+     * Displays a form to edit an existing Prayer entity.
      *
      * @Route("/{id}/edit", name="pray_edit")
      * @Method("GET")
@@ -135,10 +135,10 @@ class PrayerController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PraiseItBundle:Altar\Prayer')->find($id);
+        $entity = $em->getRepository('PraiseItBundle:Prayer')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Altar\Prayer entity.');
+            throw $this->createNotFoundException('Unable to find Prayer entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,7 +152,7 @@ class PrayerController extends Controller
     }
 
     /**
-    * Creates a form to edit a Altar\Prayer entity.
+    * Creates a form to edit a Prayer entity.
     *
     * @param Prayer $entity The entity
     *
@@ -170,20 +170,20 @@ class PrayerController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Altar\Prayer entity.
+     * Edits an existing Prayer entity.
      *
      * @Route("/{id}", name="pray_update")
      * @Method("PUT")
-     * @Template("PraiseItBundle:Altar\Prayer:edit.html.twig")
+     * @Template("PraiseItBundle:Prayer:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PraiseItBundle:Altar\Prayer')->find($id);
+        $entity = $em->getRepository('PraiseItBundle:Prayer')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Altar\Prayer entity.');
+            throw $this->createNotFoundException('Unable to find Prayer entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -203,7 +203,7 @@ class PrayerController extends Controller
         );
     }
     /**
-     * Deletes a Altar\Prayer entity.
+     * Deletes a Prayer entity.
      *
      * @Route("/{id}", name="pray_delete")
      * @Method("DELETE")
@@ -215,10 +215,10 @@ class PrayerController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('PraiseItBundle:Altar\Prayer')->find($id);
+            $entity = $em->getRepository('PraiseItBundle:Prayer')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Altar\Prayer entity.');
+                throw $this->createNotFoundException('Unable to find Prayer entity.');
             }
 
             $em->remove($entity);
@@ -229,7 +229,7 @@ class PrayerController extends Controller
     }
 
     /**
-     * Creates a form to delete a Altar\Prayer entity by id.
+     * Creates a form to delete a Prayer entity by id.
      *
      * @param mixed $id The entity id
      *

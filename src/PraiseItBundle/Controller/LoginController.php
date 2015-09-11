@@ -17,18 +17,13 @@ use PraiseItBundle\Controller\Altar;
 class LoginController extends Controller
 {
     /**
-     * @Route("/", name="Altar_of_The_Sun")
+     * @Route("/paladin", name="prayer_list")
      *
      *
      */
-    public function indexAction()
+    public function AccessAction()
     {
-        $helper = $this->get('security.authentication_utils');
-
-        return $this->render('PraiseItBundle:Default:welcome.html.twig', array(
-            'last_username' => $helper->getLastUsername(),
-            'error' => $helper->getLastAuthenticationError(),
-        ));
+        return $this->render('PraiseItBundle:Paladin:base.html.twig');
     }
 
 }

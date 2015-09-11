@@ -49,11 +49,12 @@
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
-            <li><a href="{{ path('fos_user_security_logout') }}>Logout</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            <form class="navbar-form navbar-right">
+              <input type="text" class="form-control" placeholder="Search...">&nbsp;
+            </form>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
+
         </div>
       </div>
     </nav>
@@ -63,13 +64,13 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Book of Praise</a></li>
+            <li><a href="{{ path('pray') }}">Book of Praise</a></li>
             <li><a href="#">Book of Condamnation</a></li>
             <li><a href="#">The Prophecy</a></li>
           </ul>
           <hr>
           <ul class="nav nav-sidebar">
-            <li><a href="#">Pray</a></li>
+            <li><a href="{{ path('pray_new') }}">Pray</a></li>
             <li><a href="#">Sacrifice</a></li>
             <li><a href="#">Donate</a></li>
           </ul>

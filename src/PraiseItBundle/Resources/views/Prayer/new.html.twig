@@ -1,13 +1,13 @@
-{% extends '::base.html.twig' %}
+{% extends 'PraiseItBundle:Paladin:base.html.twig' %}
 
-{% block body -%}
+{% block results -%}
     <h1>Prayer creation</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('prayer') }}">
+        <a href="{{ path('pray') }}">
             Back to the list
         </a>
     </li>
